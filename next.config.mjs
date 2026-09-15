@@ -17,13 +17,6 @@ const withPWA = withPWAInit({
         },
       },
     },
-    {
-      urlPattern: /^https:\/\/.*$/i,
-      handler: "NetworkFirst",
-      options: {
-        cacheName: "general-cache",
-      },
-    },
   ],
 });
 

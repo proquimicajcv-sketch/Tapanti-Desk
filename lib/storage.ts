@@ -1,6 +1,10 @@
 const STUDENT_NAME_KEY = "tapanti_student_name";
 
 export const saveStudentName = (name: string) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
   localStorage.setItem(STUDENT_NAME_KEY, name.trim());
 };
 

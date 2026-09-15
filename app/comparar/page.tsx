@@ -41,8 +41,20 @@ export default function CompararPage() {
     ].join("\n");
   }, [observedIds, studentName]);
 
+  const [copyMessage, setCopyMessage] = useState("");
+
   const copySummary = async () => {
-    await navigator.clipboard.writeText(summaryText);
+    if (typeof navigator === "undefined" || !navigator.clipboard) {
+      setCopyMessage("Tu navegador no permite copiar automáticamente.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      setCopyMessage("Resumen copiado");
+    } catch {
+      setCopyMessage("No se pudo copiar. Selecciona y copia manualmente.");
+    }
   };
 
   return (
@@ -68,6 +80,8 @@ export default function CompararPage() {
       >
         Copiar resumen
       </button>
+
+      {copyMessage ? <p className="mt-2 text-sm font-semibold text-[#2D5A27]">{copyMessage}</p> : null}
 
       <BottomNav />
     </main>
