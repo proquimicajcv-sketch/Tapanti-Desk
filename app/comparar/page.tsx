@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { BottomNav } from "@/components/BottomNav";
 import { getObservationsByStudent } from "@/lib/db";
 import { species } from "@/lib/species";
@@ -9,20 +10,24 @@ import { getStudentName } from "@/lib/storage";
 export default function CompararPage() {
   const [studentName, setStudentName] = useState("");
   const [observedIds, setObservedIds] = useState<string[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const load = async () => {
       const currentStudent = getStudentName();
-      setStudentName(currentStudent);
+      if (!currentStudent) {
+        router.replace("/");
+        return;
+      }
 
-      if (!currentStudent) return;
+      setStudentName(currentStudent);
 
       const records = await getObservationsByStudent(currentStudent);
       setObservedIds(Array.from(new Set(records.map((record) => record.speciesId))));
     };
 
     load();
-  }, []);
+  }, [router]);
 
   const summaryText = useMemo(() => {
     const names = species
