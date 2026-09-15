@@ -39,7 +39,7 @@ npm run build
    - Source: `Deploy from a branch`
    - Branch: `gh-pages` y carpeta `/ (root)`
 
-4. Si necesitas servirlo en subruta, ajusta `basePath` y `assetPrefix` en `next.config.mjs`.
+4. Si necesitas servirlo en subruta, ajusta `basePath` y `assetPrefix` en `next.config.mjs`, y también `start_url` en `app/manifest.ts`.
 
 ## Funcionalidades
 

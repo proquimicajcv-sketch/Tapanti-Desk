@@ -85,7 +85,8 @@ export default function CompararPage() {
       <button
         type="button"
         onClick={copySummary}
-        className="mt-3 rounded-xl bg-[#2D5A27] px-4 py-3 text-sm font-bold text-white"
+        disabled={observedIds.length === 0}
+        className="mt-3 rounded-xl bg-[#2D5A27] px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:bg-emerald-300"
       >
         Copiar resumen
       </button>
