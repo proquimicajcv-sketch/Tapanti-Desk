@@ -20,9 +20,13 @@ const withPWA = withPWAInit({
   ],
 });
 
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  basePath: isGithubActions ? "/Tapanti-Desk" : undefined,
+  assetPrefix: isGithubActions ? "/Tapanti-Desk" : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
