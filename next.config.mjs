@@ -20,9 +20,17 @@ const withPWA = withPWAInit({
   ],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ?? "";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  ...(basePath
+    ? {
+        basePath,
+        assetPrefix: basePath,
+      }
+    : {}),
   images: {
     unoptimized: true,
     remotePatterns: [

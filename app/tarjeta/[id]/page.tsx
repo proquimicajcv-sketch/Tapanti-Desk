@@ -6,8 +6,12 @@ export function generateStaticParams() {
   return species.map((item) => ({ id: item.id }));
 }
 
-export default function TarjetaDetallePage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function TarjetaDetallePage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const { id } = await Promise.resolve(params);
   const exists = species.some((item) => item.id === id);
 
   if (!exists) {
