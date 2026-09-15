@@ -18,10 +18,13 @@ export const db = new TapantiDB();
 export const markObservation = async (observation: Observation) => {
   try {
     await db.observations.add(observation);
+    return { inserted: true };
   } catch (error) {
-    if (!(error instanceof Dexie.ConstraintError)) {
-      throw error;
+    if (error instanceof Dexie.ConstraintError) {
+      return { inserted: false };
     }
+
+    throw error;
   }
 };
 

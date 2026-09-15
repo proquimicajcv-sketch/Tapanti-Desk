@@ -81,7 +81,7 @@ export default function TarjetarioPage() {
         {filteredSpecies.map((item: Species) => (
           <Link
             key={item.id}
-            href={`/tarjeta/${item.id}`}
+            href={`/tarjeta/${item.id}/`}
             className="overflow-hidden rounded-2xl border-2 border-[#2D5A27]/20 bg-[#fffdf6] shadow hover:shadow-lg"
           >
             <Image src={item.imagen} alt={item.nombre_comun} className="h-44 w-full object-cover" width={800} height={500} unoptimized />

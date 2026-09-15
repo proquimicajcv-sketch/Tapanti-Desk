@@ -26,13 +26,17 @@ export function TarjetaDetalleClient({ id }: { id: string }) {
   const onObserved = async () => {
     const studentName = getStudentName() || "Estudiante";
 
-    await markObservation({
+    const result = await markObservation({
       speciesId: item.id,
       studentName,
       timestamp: new Date().toISOString(),
     });
 
-    setMessage("¡Registro guardado sin conexión!");
+    setMessage(
+      result.inserted
+        ? "¡Registro guardado sin conexión!"
+        : "Ya habías marcado esta especie en tu tarjetario.",
+    );
   };
 
   return (

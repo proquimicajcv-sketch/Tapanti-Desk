@@ -39,7 +39,7 @@ npm run build
    - Source: `Deploy from a branch`
    - Branch: `gh-pages` y carpeta `/ (root)`
 
-4. Si necesitas servirlo en subruta, ajusta `basePath` y `assetPrefix` en `next.config.mjs`, y también `start_url` en `app/manifest.ts`.
+4. Si necesitas servirlo en subruta, define `NEXT_PUBLIC_BASE_PATH` (por ejemplo `/Tapanti-Desk`) y ajusta también `basePath` + `assetPrefix` en `next.config.mjs`.
 
 ## Funcionalidades
 
