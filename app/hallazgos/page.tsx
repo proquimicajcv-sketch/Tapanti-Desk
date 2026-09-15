@@ -74,12 +74,18 @@ export default function HallazgosPage() {
         ))}
       </section>
 
-      <Link
-        href="/comparar"
-        className="mt-5 inline-block rounded-xl bg-[#2D5A27] px-4 py-3 text-sm font-bold text-white"
-      >
-        Exportar / Comparar
-      </Link>
+      {observedIds.length > 0 ? (
+        <Link
+          href="/comparar"
+          className="mt-5 inline-block rounded-xl bg-[#2D5A27] px-4 py-3 text-sm font-bold text-white"
+        >
+          Exportar / Comparar
+        </Link>
+      ) : (
+        <p className="mt-5 inline-block rounded-xl bg-emerald-200 px-4 py-3 text-sm font-bold text-emerald-800">
+          Observa al menos una especie para exportar.
+        </p>
+      )}
 
       <BottomNav />
     </main>
