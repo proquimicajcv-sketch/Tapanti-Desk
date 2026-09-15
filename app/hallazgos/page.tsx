@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BottomNav } from "@/components/BottomNav";
@@ -64,7 +65,7 @@ export default function HallazgosPage() {
       <section className="mt-4 space-y-3">
         {observedSpecies.map((item) => (
           <article key={item.id} className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm">
-            <img src={item.imagen} alt={item.nombre_comun} className="h-16 w-16 rounded-lg object-cover" />
+            <Image src={item.imagen} alt={item.nombre_comun} className="h-16 w-16 rounded-lg object-cover" width={64} height={64} unoptimized />
             <div>
               <p className="font-extrabold text-[#1f3f1d]">{item.nombre_comun}</p>
               <p className="text-xs italic text-[#7a5a2f]">{item.nombre_cientifico}</p>

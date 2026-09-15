@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { BottomNav } from "@/components/BottomNav";
@@ -41,7 +42,7 @@ export function TarjetaDetalleClient({ id }: { id: string }) {
           COLECCIÓN FAUNA DE COSTA RICA
         </header>
 
-        <img src={item.imagen} alt={item.nombre_comun} className="h-72 w-full object-cover" />
+        <Image src={item.imagen} alt={item.nombre_comun} className="h-72 w-full object-cover" width={1200} height={720} priority unoptimized />
 
         <section className="space-y-3 p-5">
           <p className="text-sm italic text-[#7a5a2f]">{item.nombre_cientifico}</p>

@@ -67,10 +67,14 @@ export default function CompararPage() {
         Comparte este resumen al finalizar la gira de campo.
       </p>
 
+      <label htmlFor="resumen-hallazgos" className="mt-4 block text-sm font-bold text-[#2D5A27]">
+        Resumen de hallazgos para compartir
+      </label>
       <textarea
+        id="resumen-hallazgos"
         readOnly
         value={summaryText}
-        className="mt-4 h-80 w-full rounded-2xl border border-[#2D5A27]/20 bg-white p-4 text-sm"
+        className="mt-2 h-80 w-full rounded-2xl border border-[#2D5A27]/20 bg-white p-4 text-sm"
       />
 
       <button

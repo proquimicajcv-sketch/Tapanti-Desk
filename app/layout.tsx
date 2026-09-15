@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: "Guía educativa offline de fauna y flora de Tapantí.",
   applicationName: "Fauna Tapantí",
   keywords: ["Tapantí", "PWA", "Tarjetario", "Costa Rica", "Educación"],
-  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

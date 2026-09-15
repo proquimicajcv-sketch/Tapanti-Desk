@@ -8,7 +8,7 @@ class TapantiDB extends Dexie {
     super("tapanti_fauna_db");
 
     this.version(1).stores({
-      observations: "++id,speciesId,studentName,timestamp,[studentName+speciesId]",
+      observations: "++id,&[studentName+speciesId],speciesId,studentName,timestamp",
     });
   }
 }
@@ -16,13 +16,12 @@ class TapantiDB extends Dexie {
 export const db = new TapantiDB();
 
 export const markObservation = async (observation: Observation) => {
-  const existing = await db.observations
-    .where("[studentName+speciesId]")
-    .equals([observation.studentName, observation.speciesId])
-    .first();
-
-  if (!existing) {
+  try {
     await db.observations.add(observation);
+  } catch (error) {
+    if (!(error instanceof Dexie.ConstraintError)) {
+      throw error;
+    }
   }
 };
 

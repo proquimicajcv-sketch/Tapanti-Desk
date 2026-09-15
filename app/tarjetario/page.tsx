@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -48,11 +49,15 @@ export default function TarjetarioPage() {
         <p className="text-sm font-semibold text-[#7a5a2f]">Hola, {studentName}</p>
       </header>
 
+      <label htmlFor="search-species" className="mt-4 block text-sm font-bold text-[#2D5A27]">
+        Buscar por nombre común o científico
+      </label>
       <input
+        id="search-species"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
-        placeholder="Buscar por nombre común o científico"
-        className="mt-4 w-full rounded-xl border border-emerald-800/30 bg-white p-3 text-sm font-medium"
+        placeholder="Ej. quetzal o Duellmanohyla"
+        className="mt-2 w-full rounded-xl border border-emerald-800/30 bg-white p-3 text-sm font-medium"
       />
 
       <section className="mt-4 flex flex-wrap gap-2">
@@ -79,7 +84,7 @@ export default function TarjetarioPage() {
             href={`/tarjeta/${item.id}`}
             className="overflow-hidden rounded-2xl border-2 border-[#2D5A27]/20 bg-[#fffdf6] shadow hover:shadow-lg"
           >
-            <img src={item.imagen} alt={item.nombre_comun} className="h-44 w-full object-cover" loading="lazy" />
+            <Image src={item.imagen} alt={item.nombre_comun} className="h-44 w-full object-cover" width={800} height={500} unoptimized />
             <div className="p-3">
               <p className="text-lg font-extrabold text-[#1f3f1d]">{item.nombre_comun}</p>
               <p className="text-sm italic text-[#7a5a2f]">{item.nombre_cientifico}</p>
